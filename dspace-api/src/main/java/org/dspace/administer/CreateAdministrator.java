@@ -224,8 +224,8 @@ public final class CreateAdministrator {
 
                     if (s != null) {
                         s = s.trim();
-                       if (s.toLowerCase().startsWith("y")) {
-                           dataOK = true;
+                        if (s.toLowerCase().startsWith("y")) {
+                            dataOK = true;
                         }
                     }
                 } else {
