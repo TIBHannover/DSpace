@@ -158,81 +158,81 @@ public final class CreateAdministrator {
         }
 
         while (!dataOK) {
-            if(flag == false) {
-            System.out.print("E-mail address: ");
-            System.out.flush();
-
-            email = console.readLine();
-            if (!StringUtils.isBlank(email)) {
-                email = email.trim();
-            } else {
-                System.out.println("Please provide an email address.");
-                continue;
-            }
-
-            System.out.print("First name: ");
-            System.out.flush();
-
-            firstName = console.readLine();
-
-            if (firstName != null) {
-                firstName = firstName.trim();
-            }
-
-            System.out.print("Last name: ");
-            System.out.flush();
-
-            lastName = console.readLine();
-
-            if (lastName != null) {
-                lastName = lastName.trim();
-            }
-            } else {
-
-            if (cfg.hasProperty("webui.supported.locales")) {
-                System.out.println("Select one of the following languages: "
-                        + cfg.getProperty("webui.supported.locales"));
-                System.out.print("Language: ");
+            if (flag == false) {
+                System.out.print("E-mail address: ");
                 System.out.flush();
 
-                language = console.readLine();
-
-                if (language != null) {
-                    language = language.trim();
-                    language = I18nUtil.getSupportedLocale(new Locale(language)).getLanguage();
+                email = console.readLine();
+                if (!StringUtils.isBlank(email)) {
+                    email = email.trim();
+                } else {
+                    System.out.println("Please provide an email address.");
+                    continue;
                 }
-            }
 
-            System.out.println("Password will not display on screen.");
-            System.out.print("Password: ");
-            System.out.flush();
-
-            password1 = console.readPassword();
-
-            System.out.print("Again to confirm: ");
-            System.out.flush();
-
-            password2 = console.readPassword();
-
-            //TODO real password validation
-            if (password1.length > 1 && Arrays.equals(password1, password2)) {
-                // password OK
-                System.out.print("Is the above data correct? (y or n): ");
+                System.out.print("First name: ");
                 System.out.flush();
 
-                String s = console.readLine();
+                firstName = console.readLine();
 
-                if (s != null) {
-                    s = s.trim();
-                    if (s.toLowerCase().startsWith("y")) {
-                        dataOK = true;
+                if (firstName != null) {
+                    firstName = firstName.trim();
+                }
+
+                System.out.print("Last name: ");
+                System.out.flush();
+
+                lastName = console.readLine();
+
+                if (lastName != null) {
+                    lastName = lastName.trim();
+                }
+            } else {
+
+                if (cfg.hasProperty("webui.supported.locales")) {
+                    System.out.println("Select one of the following languages: "
+                        + cfg.getProperty("webui.supported.locales"));
+                    System.out.print("Language: ");
+                    System.out.flush();
+
+                    language = console.readLine();
+
+                    if (language != null) {
+                        language = language.trim();
+                        language = I18nUtil.getSupportedLocale(new Locale(language)).getLanguage();
                     }
                 }
-            } else {
-                System.out.println("Passwords don't match");
+
+                System.out.println("Password will not display on screen.");
+                System.out.print("Password: ");
+                System.out.flush();
+
+                password1 = console.readPassword();
+
+                System.out.print("Again to confirm: ");
+                System.out.flush();
+
+                password2 = console.readPassword();
+
+                //TODO real password validation
+                if (password1.length > 1 && Arrays.equals(password1, password2)) {
+                    // password OK
+                    System.out.print("Is the above data correct? (y or n): ");
+                    System.out.flush();
+
+                    String s = console.readLine();
+
+                    if (s != null) {
+                        s = s.trim();
+                       if (s.toLowerCase().startsWith("y")) {
+                           dataOK = true;
+                        }
+                    }
+                } else {
+                    System.out.println("Passwords don't match");
+                }
             }
         }
-    }
 
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password1));
