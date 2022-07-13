@@ -111,7 +111,7 @@ public final class CreateAdministrator {
             formatter.printHelp("dspace create-administrator", header, options, footer, true);
             return;
         } else {
-            ca.negotiateAdministratorDetails(line);    
+            ca.negotiateAdministratorDetails(line);
         }
     }
 
@@ -151,11 +151,11 @@ public final class CreateAdministrator {
         boolean flag = false;
 
 
-        if(!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-                    && (line.hasOption("c") || (!line.hasOption("c")) 
+        if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
+                    && (line.hasOption("c") || (!line.hasOption("c"))
                     && cfg.getProperty("webui.supported.locales") == null)) {
-                        flag = true; 
-                    }
+            flag = true;
+        }
 
         while (!dataOK) {
             if(flag == false) {
