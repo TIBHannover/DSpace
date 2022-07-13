@@ -164,7 +164,7 @@ public final class CreateAdministrator {
                 if (password != null) {
                     dataOK = true;
                 }
-            } else if(!flag){
+            } else if (!flag) {
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
