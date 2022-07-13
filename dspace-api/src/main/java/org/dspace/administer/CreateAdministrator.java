@@ -110,9 +110,9 @@ public final class CreateAdministrator {
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("dspace create-administrator", header, options, footer, true);
             return;
-            } else {
+        } else {
             ca.negotiateAdministratorDetails(line);    
-            }
+        }
     }
 
     /**
