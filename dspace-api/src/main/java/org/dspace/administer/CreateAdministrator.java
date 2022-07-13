@@ -158,7 +158,7 @@ public final class CreateAdministrator {
         }
 
         while (!dataOK) {
-            if (flag == false) {
+            if (!flag) {
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
