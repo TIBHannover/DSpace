@@ -223,35 +223,35 @@ public final class CreateAdministrator {
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
-        //Cleaning arrays that held password   
+
     }
 
 
-private char[] getPassword(Console console) {
-    char[] password1 = null;
-    char[] password2 = null;
-    System.out.println("Password will not display on screen.");
-    System.out.print("Password: ");
-    System.out.flush();
+    private char[] getPassword(Console console) {
+        char[] password1 = null;
+        char[] password2 = null;
+        System.out.println("Password will not display on screen.");
+        System.out.print("Password: ");
+        System.out.flush();
 
 
-    password1 = console.readPassword();
+        password1 = console.readPassword();
 
-    System.out.print("Again to confirm: ");
-    System.out.flush();
+        System.out.print("Again to confirm: ");
+        System.out.flush();
 
-    password2 = console.readPassword();
+        password2 = console.readPassword();
 
-    //TODO real password validation
-    if (password1.length > 1 && Arrays.equals(password1, password2)) {
-        // password OK
-        Arrays.fill(password2, ' ');
-        return password1;   
-    } else {
-        System.out.println("Passwords don't match");
-        return null;
-    }    
-}
+        //TODO real password validation
+        if (password1.length > 1 && Arrays.equals(password1, password2)) {
+            // password OK
+            Arrays.fill(password2, ' ');
+            return password1;   
+        } else {
+            System.out.println("Passwords don't match");
+            return null;
+        }    
+    }
 
     /**
      * Create the administrator with the given details.  If the user
