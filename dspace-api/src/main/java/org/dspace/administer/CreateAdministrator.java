@@ -162,7 +162,7 @@ public final class CreateAdministrator {
                 if (password != null) {
                     dataOK = true;
                 }
-            } else {
+            } else if(!flag && !line.hasOption('p')){
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
