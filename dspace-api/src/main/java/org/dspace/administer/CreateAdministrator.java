@@ -246,11 +246,11 @@ public final class CreateAdministrator {
         if (password1.length > 1 && Arrays.equals(password1, password2)) {
             // password OK
             Arrays.fill(password2, ' ');
-            return password1;   
+            return password1;
         } else {
             System.out.println("Passwords don't match");
             return null;
-        }    
+        }
     }
 
     /**
