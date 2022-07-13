@@ -191,7 +191,6 @@ public final class CreateAdministrator {
                 if (lastName != null) {
                     lastName = lastName.trim();
                 }
-            
 
                 if (cfg.hasProperty("webui.supported.locales")) {
                     System.out.println("Select one of the following languages: "
@@ -217,18 +216,14 @@ public final class CreateAdministrator {
                 if (s != null) {
                     s = s.trim();
                     if (s.toLowerCase().startsWith("y") && password != null) {
-                            dataOK = true;
+                        dataOK = true;
                     }
                 }
-               
             }
         }
-
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
-
-        //Cleaning arrays that held password
-        
+        //Cleaning arrays that held password   
     }
 
 
