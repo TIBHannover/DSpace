@@ -156,7 +156,8 @@ public final class CreateAdministrator {
             flag = true;
         } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
             flag = false;
-        }
+        } else 
+            flag = true;
 
         while (!dataOK) {
             if (flag) {
