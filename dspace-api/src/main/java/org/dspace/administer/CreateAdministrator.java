@@ -151,7 +151,7 @@ public final class CreateAdministrator {
 
 
         if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-            && (line.hasOption("c") || (!line.hasOption("c")) 
+            && (line.hasOption("c") || (!line.hasOption("c"))
             && cfg.getProperty("webui.supported.locales") == null)) {
             flag = true;
         } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
