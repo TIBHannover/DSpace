@@ -154,10 +154,13 @@ public final class CreateAdministrator {
             && (line.hasOption("c") || (!line.hasOption("c")
             && cfg.getProperty("webui.supported.locales") == null))) {
             flag = true;
+            dataOK = false;
         } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
             flag = false;
-        } else 
-            flag = true;
+            dataOK = false;
+        } else {
+            dataOK = true;
+        }
 
         while (!dataOK) {
             if (flag) {
