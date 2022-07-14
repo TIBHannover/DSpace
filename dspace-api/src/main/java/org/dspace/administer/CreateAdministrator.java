@@ -158,7 +158,9 @@ public final class CreateAdministrator {
         } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
             flag = false;
             dataOK = false;
-        } else {
+        } else if (line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
+                   && (line.hasOption("c") || (!line.hasOption("c")
+                   && cfg.getProperty("webui.supported.locales") == null))) {
             dataOK = true;
             password = line.getOptionValue("p").toCharArray();
         }
