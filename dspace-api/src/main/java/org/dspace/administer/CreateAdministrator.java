@@ -160,6 +160,7 @@ public final class CreateAdministrator {
             dataOK = false;
         } else {
             dataOK = true;
+            password = line.getOptionValue("p").toCharArray();
         }
 
         while (!dataOK) {
