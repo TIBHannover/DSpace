@@ -209,16 +209,18 @@ public final class CreateAdministrator {
                 }
 
                 password = getPassword(console);
-                 // password OK
-                System.out.print("Is the above data correct? (y or n): ");
-                System.out.flush();
+                if (password != null) {
+                    // password OK
+                    System.out.print("Is the above data correct? (y or n): ");
+                    System.out.flush();
 
-                String s = console.readLine();
+                    String s = console.readLine();
 
-                if (s != null) {
-                    s = s.trim();
-                    if (s.toLowerCase().startsWith("y") && password != null) {
-                        dataOK = true;
+                    if (s != null) {
+                        s = s.trim();
+                        if (s.toLowerCase().startsWith("y") && password != null) {
+                            dataOK = true;
+                        }
                     }
                 }
             }
