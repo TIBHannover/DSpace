@@ -146,7 +146,7 @@ public final class CreateAdministrator {
         String lastName = null;
         String language = I18nUtil.getDefaultLocale().getLanguage();
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
-        boolean flag = line.hasOption('p');
+        boolean flag = line.hasOption('p') && (line.hasOption("c") || (!line.hasOption("c") && cfg.getProperty("webui.supported.locales") == null));
         char[] password = null;
 
 
