@@ -146,7 +146,8 @@ public final class CreateAdministrator {
         String lastName = null;
         String language = I18nUtil.getDefaultLocale().getLanguage();
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
-        boolean flag = line.hasOption('p') && (line.hasOption("c") || (!line.hasOption("c") && cfg.getProperty("webui.supported.locales") == null));
+        boolean flag = line.hasOption('p');
+        boolean checkLanguage = (line.hasOption("c") || (!line.hasOption("c") && cfg.getProperty("webui.supported.locales") == null));
         char[] password = null;
 
 
@@ -173,7 +174,7 @@ public final class CreateAdministrator {
                     flag = true;
                     dataOK = true;
                 }
-            } else {
+            }  else if (flag && checkLanguage) {
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
