@@ -169,7 +169,7 @@ public final class CreateAdministrator {
             if (!flag) {
                 password = getPassword(console);
                 if (password != null) {
-                    dataOK = true;
+                    flag = true;
                 }
             } else {
                 System.out.print("E-mail address: ");
