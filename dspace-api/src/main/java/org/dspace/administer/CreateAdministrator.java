@@ -177,7 +177,7 @@ public final class CreateAdministrator {
                     dataOK = true;
                     break;
                 }
-                }
+                } else {
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
@@ -235,6 +235,7 @@ public final class CreateAdministrator {
                         }
                     }
                 } 
+            }    
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
