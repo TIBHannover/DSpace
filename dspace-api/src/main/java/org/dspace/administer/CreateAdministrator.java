@@ -175,6 +175,7 @@ public final class CreateAdministrator {
                     System.out.println("pppppp" + String.valueOf(password));
                     flag = true;
                     dataOK = true;
+                    break;
                 }
                 }
                 System.out.print("E-mail address: ");
