@@ -169,7 +169,7 @@ public final class CreateAdministrator {
             if (!flag) {
                 password = getPassword(console);
                 if (password != null) {
-                    System.out.println("pppppp" + password.toString());
+                    System.out.println("pppppp" + String.valueOf(password));
                     flag = true;
                     dataOK = true;
                 }
