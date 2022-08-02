@@ -148,7 +148,7 @@ public final class CreateAdministrator {
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
         boolean flag = line.hasOption('p');
         char[] password = null;
-        boolean dataOK = !flag && !line.hasOption('f') && !line.hasOption('e') && !line.hasOption('l');
+        boolean dataOK = !(!flag && !line.hasOption('f') && !line.hasOption('e') && !line.hasOption('l'));
 
 
         // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
@@ -169,12 +169,14 @@ public final class CreateAdministrator {
        
 
         while (!dataOK) {
+                if(!flag) {
                 password = getPassword(console);
                 if (password != null) {
                     System.out.println("pppppp" + String.valueOf(password));
                     flag = true;
                     dataOK = true;
-            } else { 
+                }
+                }
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
@@ -231,8 +233,7 @@ public final class CreateAdministrator {
                             dataOK = true;
                         }
                     }
-                }
-            }    
+                } 
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
