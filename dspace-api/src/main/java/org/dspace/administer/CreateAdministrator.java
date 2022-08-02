@@ -139,7 +139,7 @@ public final class CreateAdministrator {
 
         System.out.println("Creating an initial administrator account");
 
-        boolean dataOK = false;
+       
 
         String email = null;
         String firstName = null;
@@ -148,6 +148,7 @@ public final class CreateAdministrator {
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
         boolean flag = line.hasOption('p');
         char[] password = null;
+        boolean dataOK = !flag && !line.hasOption('f') && !line.hasOption('e') && !line.hasOption('l');
 
 
         // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
@@ -165,6 +166,8 @@ public final class CreateAdministrator {
         //     password = line.getOptionValue("p").toCharArray();
         // }
 
+       
+
         while (!dataOK) {
             if (!flag) {
                 password = getPassword(console);
@@ -172,9 +175,8 @@ public final class CreateAdministrator {
                     System.out.println("pppppp" + String.valueOf(password));
                     flag = true;
                     dataOK = true;
-                    goto step;
                 }
-            }  
+            } else { 
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
@@ -203,7 +205,6 @@ public final class CreateAdministrator {
                 if (lastName != null) {
                     lastName = lastName.trim();
                 }
-                step:
                     if (cfg.hasProperty("webui.supported.locales")) {
                     System.out.println("Select one of the following languages: "
                         + cfg.getProperty("webui.supported.locales"));
@@ -233,6 +234,7 @@ public final class CreateAdministrator {
                         }
                     }
                 }
+            }    
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
