@@ -169,13 +169,11 @@ public final class CreateAdministrator {
        
 
         while (!dataOK) {
-            if (!flag) {
                 password = getPassword(console);
                 if (password != null) {
                     System.out.println("pppppp" + String.valueOf(password));
                     flag = true;
                     dataOK = true;
-                }
             } else { 
                 System.out.print("E-mail address: ");
                 System.out.flush();
