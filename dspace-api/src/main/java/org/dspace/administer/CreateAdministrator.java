@@ -167,17 +167,8 @@ public final class CreateAdministrator {
         // }
 
        
-
-        while (!dataOK) {
-                if(!flag) {
-                password = getPassword(console);
-                if (password != null) {
-                    System.out.println("pppppp" + String.valueOf(password));
-                    flag = true;
-                    dataOK = true;
-                    break;
-                }
-                } else {
+       
+        while (!dataOK) { 
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
@@ -221,7 +212,7 @@ public final class CreateAdministrator {
                   }
                 
 
-                if (password != null) {
+                // if (password != null) {
                     // password OK
                     System.out.print("Is the above data correct? (y or n): ");
                     System.out.flush();
@@ -234,8 +225,11 @@ public final class CreateAdministrator {
                             dataOK = true;
                         }
                     }
-                } 
-            }    
+                // } 
+          
+        }
+        if(!flag) {
+            password = getPassword(console);
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
