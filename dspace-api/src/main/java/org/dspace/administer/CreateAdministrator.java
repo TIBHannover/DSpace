@@ -146,32 +146,29 @@ public final class CreateAdministrator {
         String lastName = null;
         String language = I18nUtil.getDefaultLocale().getLanguage();
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
-        boolean flag = false;
+        boolean flag = line.hasOption('p');
         char[] password = null;
 
 
-        if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-            && (line.hasOption("c") || (!line.hasOption("c")
-            && cfg.getProperty("webui.supported.locales") == null))) {
-            flag = true;
-            dataOK = false;
-        } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
-            flag = false;
-            dataOK = false;
-        } else if (line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-                   && (line.hasOption("c") || (!line.hasOption("c")
-                   && cfg.getProperty("webui.supported.locales") == null))) {
-            dataOK = true;
-            password = line.getOptionValue("p").toCharArray();
-        }
+        // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
+        //     && (line.hasOption("c") || (!line.hasOption("c")
+        //     && cfg.getProperty("webui.supported.locales") == null))) {
+        //     flag = true;
+        //     dataOK = false;
+        // } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
+        //     flag = false;
+        //     dataOK = false;
+        // } else if (line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
+        //            && (line.hasOption("c") || (!line.hasOption("c")
+        //            && cfg.getProperty("webui.supported.locales") == null))) {
+        //     dataOK = true;
+        //     password = line.getOptionValue("p").toCharArray();
+        // }
 
         while (!dataOK) {
-            if (flag) {
+            if (!flag) {
                 password = getPassword(console);
-                if (password != null) {
-                    dataOK = true;
-                }
-            } else if (!flag) {
+            } else {
                 System.out.print("E-mail address: ");
                 System.out.flush();
 
@@ -215,7 +212,6 @@ public final class CreateAdministrator {
                     }
                 }
 
-                password = getPassword(console);
                 if (password != null) {
                     // password OK
                     System.out.print("Is the above data correct? (y or n): ");
