@@ -209,9 +209,7 @@ public final class CreateAdministrator {
                 }
             }
 
-            password = getPassword(console);
-
-            if (password != null) {
+            
                 // password OK
                 System.out.print("Is the above data correct? (y or n): ");
                 System.out.flush();
@@ -225,15 +223,14 @@ public final class CreateAdministrator {
                         flag2 = true;
                     }
                 }
-            }
 
         }
-        if (!flag && !flag2) {
+        if (!flag) {
             password = getPassword(console);
             if (password == null) {
                 return;
             }
-        } else if (flag) {
+        } else {
             password = line.getOptionValue("p").toCharArray();
         }
         // if we make it to here, we are ready to create an administrator
