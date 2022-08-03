@@ -27,7 +27,6 @@ import org.dspace.eperson.service.GroupService;
 import org.dspace.services.ConfigurationService;
 import org.dspace.services.factory.DSpaceServicesFactory;
 
-
 /**
  * A command-line tool for creating an initial administrator for setting up a
  * DSpace site. Prompts for an e-mail address, last name, first name and
@@ -56,14 +55,14 @@ public final class CreateAdministrator {
     protected GroupService groupService;
 
     /**
-     * For invoking via the command line.  If called with no command line arguments,
+     * For invoking via the command line. If called with no command line arguments,
      * it will negotiate with the user for the administrator details
      *
      * @param argv the command line arguments given
      * @throws Exception if error
      */
     public static void main(String[] argv)
-        throws Exception {
+            throws Exception {
         CommandLineParser parser = new DefaultParser();
         Options options = new Options();
         // Console console = System.console();
@@ -96,10 +95,10 @@ public final class CreateAdministrator {
         }
 
         if (line.hasOption("e") && line.hasOption("f") && line.hasOption("l") &&
-            line.hasOption("c") && line.hasOption("p")) {
+                line.hasOption("c") && line.hasOption("p")) {
             ca.createAdministrator(line.getOptionValue("e"),
-                                   line.getOptionValue("f"), line.getOptionValue("l"),
-                                   line.getOptionValue("c"), line.getOptionValue("p"));
+                    line.getOptionValue("f"), line.getOptionValue("l"),
+                    line.getOptionValue("c"), line.getOptionValue("p"));
         } else if (line.hasOption("h")) {
             String header = "\nA command-line tool for creating an initial administrator for setting up a" +
                     " DSpace site. Unless all the required parameters are passed it will" +
@@ -121,7 +120,7 @@ public final class CreateAdministrator {
      * @throws Exception if error
      */
     protected CreateAdministrator()
-        throws Exception {
+            throws Exception {
         context = new Context();
         groupService = EPersonServiceFactory.getInstance().getGroupService();
         ePersonService = EPersonServiceFactory.getInstance().getEPersonService();
@@ -134,12 +133,10 @@ public final class CreateAdministrator {
      * @throws Exception if error
      */
     protected void negotiateAdministratorDetails(CommandLine line)
-        throws Exception {
+            throws Exception {
         Console console = System.console();
 
         System.out.println("Creating an initial administrator account");
-
-       
 
         String email = null;
         String firstName = null;
@@ -151,102 +148,98 @@ public final class CreateAdministrator {
         boolean dataOK = !(!line.hasOption('f') || !line.hasOption('e') || !line.hasOption('l'));
         boolean flag2 = false;
 
-
-        // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-        //     && (line.hasOption("c") || (!line.hasOption("c")
-        //     && cfg.getProperty("webui.supported.locales") == null))) {
-        //     flag = true;
-        //     dataOK = false;
-        // } else if (!line.hasOption('p') && !line.hasOption("e")  && !line.hasOption("f") && !line.hasOption("l")) {
-        //     flag = false;
-        //     dataOK = false;
-        // } else if (line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
-        //            && (line.hasOption("c") || (!line.hasOption("c")
-        //            && cfg.getProperty("webui.supported.locales") == null))) {
-        //     dataOK = true;
-        //     password = line.getOptionValue("p").toCharArray();
+        // if (!line.hasOption('p') && line.hasOption("e") && line.hasOption("f") &&
+        // line.hasOption("l")
+        // && (line.hasOption("c") || (!line.hasOption("c")
+        // && cfg.getProperty("webui.supported.locales") == null))) {
+        // flag = true;
+        // dataOK = false;
+        // } else if (!line.hasOption('p') && !line.hasOption("e") &&
+        // !line.hasOption("f") && !line.hasOption("l")) {
+        // flag = false;
+        // dataOK = false;
+        // } else if (line.hasOption('p') && line.hasOption("e") && line.hasOption("f")
+        // && line.hasOption("l")
+        // && (line.hasOption("c") || (!line.hasOption("c")
+        // && cfg.getProperty("webui.supported.locales") == null))) {
+        // dataOK = true;
+        // password = line.getOptionValue("p").toCharArray();
         // }
 
-       
-       
-        while (!dataOK) { 
-                System.out.print("E-mail address: ");
-                System.out.flush();
+        while (!dataOK) {
+            System.out.print("E-mail address: ");
+            System.out.flush();
 
-                email = console.readLine();
-                if (!StringUtils.isBlank(email)) {
-                    email = email.trim();
-                } else {
-                    System.out.println("Please provide an email address.");
-                    continue;
-                }
-
-                System.out.print("First name: ");
-                System.out.flush();
-
-                firstName = console.readLine();
-
-                if (firstName != null) {
-                    firstName = firstName.trim();
-                }
-
-                System.out.print("Last name: ");
-                System.out.flush();
-
-                lastName = console.readLine();
-
-                if (lastName != null) {
-                    lastName = lastName.trim();
-                }
-                    if (cfg.hasProperty("webui.supported.locales")) {
-                    System.out.println("Select one of the following languages: "
-                        + cfg.getProperty("webui.supported.locales"));
-                    System.out.print("Language: ");
-                    System.out.flush();
-
-                    language = console.readLine();
-
-                    if (language != null) {
-                        language = language.trim();
-                        language = I18nUtil.getSupportedLocale(new Locale(language)).getLanguage();
-                    }
-                  }
-                if(!flag) {
-                    password = getPassword(console);
-                } else {
-                    password = line.getOptionValue("p").toCharArray();
-                }    
-                 
-                if (password != null) {
-                    // password OK
-                    System.out.print("Is the above data correct? (y or n): ");
-                    System.out.flush();
-
-                    String s = console.readLine();
-
-                    if (s != null) {
-                        s = s.trim();
-                        if (s.toLowerCase().startsWith("y")) {
-                            dataOK = true;
-                            flag2 = true;
-                        }
-                    }
-                } 
-          
-        }
-        if(!flag && !flag2) {
-            password = getPassword(console);
-            if(password == null) {
-              return;  
+            email = console.readLine();
+            if (!StringUtils.isBlank(email)) {
+                email = email.trim();
+            } else {
+                System.out.println("Please provide an email address.");
+                continue;
             }
-        } else if(flag) {
+
+            System.out.print("First name: ");
+            System.out.flush();
+
+            firstName = console.readLine();
+
+            if (firstName != null) {
+                firstName = firstName.trim();
+            }
+
+            System.out.print("Last name: ");
+            System.out.flush();
+
+            lastName = console.readLine();
+
+            if (lastName != null) {
+                lastName = lastName.trim();
+            }
+            if (cfg.hasProperty("webui.supported.locales")) {
+                System.out.println("Select one of the following languages: "
+                        + cfg.getProperty("webui.supported.locales"));
+                System.out.print("Language: ");
+                System.out.flush();
+
+                language = console.readLine();
+
+                if (language != null) {
+                    language = language.trim();
+                    language = I18nUtil.getSupportedLocale(new Locale(language)).getLanguage();
+                }
+            }
+
+            password = getPassword(console);
+
+            if (password != null) {
+                // password OK
+                System.out.print("Is the above data correct? (y or n): ");
+                System.out.flush();
+
+                String s = console.readLine();
+
+                if (s != null) {
+                    s = s.trim();
+                    if (s.toLowerCase().startsWith("y")) {
+                        dataOK = true;
+                        flag2 = true;
+                    }
+                }
+            }
+
+        }
+        if (!flag && !flag2) {
+            password = getPassword(console);
+            if (password == null) {
+                return;
+            }
+        } else if (flag) {
             password = line.getOptionValue("p").toCharArray();
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
 
     }
-
 
     private char[] getPassword(Console console) {
         char[] password1 = null;
@@ -255,7 +248,6 @@ public final class CreateAdministrator {
         System.out.print("Password: ");
         System.out.flush();
 
-
         password1 = console.readPassword();
 
         System.out.print("Again to confirm: ");
@@ -263,7 +255,7 @@ public final class CreateAdministrator {
 
         password2 = console.readPassword();
 
-        //TODO real password validation
+        // TODO real password validation
         if (password1.length > 1 && Arrays.equals(password1, password2)) {
             // password OK
             Arrays.fill(password2, ' ');
@@ -275,7 +267,7 @@ public final class CreateAdministrator {
     }
 
     /**
-     * Create the administrator with the given details.  If the user
+     * Create the administrator with the given details. If the user
      * already exists then they are simply upped to administrator status
      *
      * @param email    the email for the user
@@ -286,8 +278,8 @@ public final class CreateAdministrator {
      * @throws Exception if error
      */
     protected void createAdministrator(String email, String first, String last,
-                                       String language, String pw)
-        throws Exception {
+            String language, String pw)
+            throws Exception {
         // Of course we aren't an administrator yet so we need to
         // circumvent authorisation
         context.turnOffAuthorisationSystem();
