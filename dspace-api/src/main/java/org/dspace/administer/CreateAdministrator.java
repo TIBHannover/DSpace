@@ -190,7 +190,6 @@ public final class CreateAdministrator {
                 }
             }
 
-            // password OK
             System.out.print("Is the above data correct? (y or n): ");
             System.out.flush();
 
