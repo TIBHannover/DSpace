@@ -146,25 +146,6 @@ public final class CreateAdministrator {
         boolean flag = line.hasOption('p');
         char[] password = null;
         boolean dataOK = !(!line.hasOption('f') || !line.hasOption('e') || !line.hasOption('l'));
-        boolean flag2 = false;
-
-        // if (!line.hasOption('p') && line.hasOption("e") && line.hasOption("f") &&
-        // line.hasOption("l")
-        // && (line.hasOption("c") || (!line.hasOption("c")
-        // && cfg.getProperty("webui.supported.locales") == null))) {
-        // flag = true;
-        // dataOK = false;
-        // } else if (!line.hasOption('p') && !line.hasOption("e") &&
-        // !line.hasOption("f") && !line.hasOption("l")) {
-        // flag = false;
-        // dataOK = false;
-        // } else if (line.hasOption('p') && line.hasOption("e") && line.hasOption("f")
-        // && line.hasOption("l")
-        // && (line.hasOption("c") || (!line.hasOption("c")
-        // && cfg.getProperty("webui.supported.locales") == null))) {
-        // dataOK = true;
-        // password = line.getOptionValue("p").toCharArray();
-        // }
 
         while (!dataOK) {
             System.out.print("E-mail address: ");
@@ -209,20 +190,18 @@ public final class CreateAdministrator {
                 }
             }
 
-            
-                // password OK
-                System.out.print("Is the above data correct? (y or n): ");
-                System.out.flush();
+            // password OK
+            System.out.print("Is the above data correct? (y or n): ");
+            System.out.flush();
 
-                String s = console.readLine();
+            String s = console.readLine();
 
-                if (s != null) {
-                    s = s.trim();
-                    if (s.toLowerCase().startsWith("y")) {
-                        dataOK = true;
-                        flag2 = true;
-                    }
+            if (s != null) {
+                s = s.trim();
+                if (s.toLowerCase().startsWith("y")) {
+                    dataOK = true;
                 }
+            }
 
         }
         if (!flag) {
