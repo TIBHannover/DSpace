@@ -230,6 +230,8 @@ public final class CreateAdministrator {
         }
         if(!flag) {
             password = getPassword(console);
+        } else {
+            password = line.getOptionValue("p").toCharArray();
         }
         // if we make it to here, we are ready to create an administrator
         createAdministrator(email, firstName, lastName, language, String.valueOf(password));
