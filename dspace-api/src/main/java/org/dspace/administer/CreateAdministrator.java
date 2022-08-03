@@ -148,7 +148,7 @@ public final class CreateAdministrator {
         ConfigurationService cfg = DSpaceServicesFactory.getInstance().getConfigurationService();
         boolean flag = line.hasOption('p');
         char[] password = null;
-        boolean dataOK = !flag && (!line.hasOption('f') || !line.hasOption('e') || !line.hasOption('l'));
+        boolean dataOK = !(flag && !line.hasOption('f') && !line.hasOption('e') && !line.hasOption('l'));
 
 
         // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
