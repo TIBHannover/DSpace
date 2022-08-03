@@ -234,7 +234,7 @@ public final class CreateAdministrator {
             if(password == null) {
               return;  
             }
-        } else {
+        } else if(flag) {
             password = line.getOptionValue("p").toCharArray();
         }
         // if we make it to here, we are ready to create an administrator
