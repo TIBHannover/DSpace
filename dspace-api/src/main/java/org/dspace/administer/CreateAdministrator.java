@@ -211,8 +211,11 @@ public final class CreateAdministrator {
                         language = I18nUtil.getSupportedLocale(new Locale(language)).getLanguage();
                     }
                   }
-                
-                password = getPassword(console);
+                if(!flag) {
+                    password = getPassword(console);
+                } else {
+                    password = line.getOptionValue("p").toCharArray();
+                }    
                  
                 if (password != null) {
                     // password OK
