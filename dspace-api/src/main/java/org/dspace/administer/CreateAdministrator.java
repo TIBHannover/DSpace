@@ -149,6 +149,7 @@ public final class CreateAdministrator {
         boolean flag = line.hasOption('p');
         char[] password = null;
         boolean dataOK = !(!line.hasOption('f') || !line.hasOption('e') || !line.hasOption('l'));
+        boolean flag2 = false;
 
 
         // if (!line.hasOption('p') && line.hasOption("e")  && line.hasOption("f") && line.hasOption("l")
@@ -224,12 +225,13 @@ public final class CreateAdministrator {
                         s = s.trim();
                         if (s.toLowerCase().startsWith("y")) {
                             dataOK = true;
+                            flag2 = true;
                         }
                     }
                 } 
           
         }
-        if(!flag && !dataOK) {
+        if(!flag && !flag2) {
             password = getPassword(console);
             if(password == null) {
               return;  
