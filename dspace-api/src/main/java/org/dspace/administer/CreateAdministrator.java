@@ -211,8 +211,9 @@ public final class CreateAdministrator {
                     }
                   }
                 
-
-                // if (password != null) {
+                password = getPassword(console);
+                 
+                if (password != null) {
                     // password OK
                     System.out.print("Is the above data correct? (y or n): ");
                     System.out.flush();
@@ -225,7 +226,7 @@ public final class CreateAdministrator {
                             dataOK = true;
                         }
                     }
-                // } 
+                } 
           
         }
         if(!flag) {
