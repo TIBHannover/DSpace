@@ -229,7 +229,7 @@ public final class CreateAdministrator {
                 } 
           
         }
-        if(!flag) {
+        if(!flag && !dataOK) {
             password = getPassword(console);
             if(password == null) {
               return;  
