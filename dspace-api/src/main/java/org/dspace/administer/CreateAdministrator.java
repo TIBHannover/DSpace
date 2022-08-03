@@ -230,6 +230,9 @@ public final class CreateAdministrator {
         }
         if(!flag) {
             password = getPassword(console);
+            if(password == null) {
+              return;  
+            }
         } else {
             password = line.getOptionValue("p").toCharArray();
         }
