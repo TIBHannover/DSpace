@@ -197,12 +197,12 @@ public final class CreateAdministrator {
             }
 
         }
-        if (!flag && dataOK) {
+        if (!flag) {
             password = getPassword(console);
             if (password == null) {
                 return;
             }
-        } else if (flag) {
+        } else {
             password = line.getOptionValue("p").toCharArray();
         }
         // if we make it to here, we are ready to create an administrator
